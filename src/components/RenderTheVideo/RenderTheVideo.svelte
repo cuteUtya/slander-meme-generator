@@ -61,12 +61,7 @@
 		isError = false;
 		percent = 0;
 		$videoSrc = '';
-
-		try {
-			$videoSrc = await renderer.render($scenes, $filmSettings, $musicSettings);
-		} catch (err) {
-			isError = true;
-		}
+		$videoSrc = await renderer.render($scenes, $filmSettings, $musicSettings);
 		isRendering = false;
 	}
 </script>
@@ -86,7 +81,7 @@
 			<div class="marg">Remaining time: {msToTime(remainingRenderingTime)}</div>
 		{:else if isError}
 			<div class="marg">An error occurred while rendering your video</div>
-			<Button class="marg" on:click={render}>Try agin</Button>
+			<Button class="marg" on:click={render}>Try again</Button>
 		{:else if $videoSrc === ''}
 			<Button on:click={render}>Start rendering</Button>
 		{:else}
